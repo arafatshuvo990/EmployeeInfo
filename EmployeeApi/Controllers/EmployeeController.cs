@@ -22,7 +22,7 @@ namespace EmployeeApi.Controllers
         [HttpGet]
         public IActionResult GetEmployees()
         {
-            var employees = _context.Employees.ToList();
+            var employees = _context.Employee.ToList();
             return Ok(employees);
         }
     }

@@ -10,6 +10,6 @@ namespace EmployeeApi.Data
         {
         }
 
-        public DbSet<EmployeeModel> Employees { get; set; }
+        public DbSet<EmployeeModel> Employee { get; set; }
     }
 }
