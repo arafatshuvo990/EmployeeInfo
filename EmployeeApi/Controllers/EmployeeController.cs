@@ -1,32 +1,36 @@
+using EmployeeApi.Data;
+using EmployeeApi.Mappers;
+using EmployeeApi.Models;
+using EmployeeApi.Repositories.Interfaces;
+using EmployeeApi.ViewModels;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
-using EmployeeApi.Data;
-using EmployeeApi.Model;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Logging;
-
 namespace EmployeeApi.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
 
-    public class EmployeeController(ApplicationDbContext context) : ControllerBase
+    public class EmployeeController(HrmDbContext context, IEmployeeRepository employeeRepo) : ControllerBase
     {
-        [HttpGet("employee")]
+        [HttpGet()]
         public async Task<IActionResult> GetEmployees()
         {
-            var employees = await context.Employee.ToListAsync();
-            return Ok(employees);
+            var employees = await employeeRepo.GetAllAsync();
+            var result = employees
+            .Select(EmployeeMapper.ToViewModel)
+            .ToList();
+            return Ok(result);
         }
 
         [HttpGet("{id}")]
         public async Task<IActionResult> GetEmployeeById(int id)
         {
-            var employee = await context.Employee.FirstOrDefaultAsync(e => e.Id == id);
+            var employee = await context.Employees.FirstOrDefaultAsync(e => e.Id == id);
 
             if (employee == null)
                 return NotFound("Employee not found");
@@ -34,14 +38,15 @@ namespace EmployeeApi.Controllers
             return Ok(employee);
         }
         [HttpPost]
-        public async Task<IActionResult> CreateEmployee([FromBody] EmployeeModel employee)
+        public async Task<IActionResult> CreateEmployee(CreateEmployeeViewModel vm)
         {
-
-            context.Employee.Add(employee);
+            var employee = EmployeeMapper.ToEntity(vm);
+            employeeRepo.AddAsync(employee);
             await context.SaveChangesAsync();
 
-            return CreatedAtAction(nameof(GetEmployeeById),
-                new { id = employee.Id }, employee);
+            return Ok(EmployeeMapper.ToViewModel(employee));
         }
+
+
     }
 }
