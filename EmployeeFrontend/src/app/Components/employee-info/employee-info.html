@@ -1,0 +1,24 @@
+<pre>{{ employees | json }}</pre>
+<h4>Employee Information</h4>
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Employee Name</th>
+      <th>Employee Name Bangla</th>
+      <th>Contact</th>
+      <th>Father Name</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let employee of employees">
+      <td>{{ employee.id }}</td>
+      <td>{{ employee.employeeName }}</td>
+      <td>{{ employee.employeeNameBangla }}</td>
+       <td>{{ employee.contactNo }}</td>
+       <td>{{ employee.fatherName || "No Father Name" }}</td>
+     <!-- <td>{{ employee.fatherName || "no name"}} </td> -->
+    </tr>
+  </tbody>
+</table>

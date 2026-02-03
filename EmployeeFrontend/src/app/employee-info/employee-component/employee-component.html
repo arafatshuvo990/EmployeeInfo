@@ -1,0 +1,46 @@
+<div class="container mt-4">
+  <h3 class="mb-3">Employee List</h3>
+
+  <table class="table table-bordered table-striped table-hover">
+    <thead class="table-dark">
+      <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Bangla Name</th>
+        <th>Department</th>
+        <th>Designation</th>
+        <th>Contact</th>
+        <th>Gender</th>
+        <th>Job Type</th>
+        <th>Active</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let emp of employees; let i = index">
+        <td>{{ i + 1 }}</td>
+        <td>{{ emp.employeeName }}</td>
+        <td>{{ emp.employeeNameBangla }}</td>
+        <td>{{ emp.idDepartment }}</td>
+        <td>{{ emp.idDesignation }}</td>
+        <td>{{ emp.contactNo }}</td>
+        <td>{{ emp.idGender }}</td>
+        <td>{{ emp.idJobType }}</td>
+        <!-- <td>
+          <span
+            class="badge"
+            [ngClass]="emp.hasOvertime ? 'bg-success' : 'bg-secondary'"
+          >
+            {{ emp.hasOvertime ? 'Yes' : 'No' }}
+          </span>
+        </td> -->
+      </tr>
+
+      <tr *ngIf="employees.length === 0">
+        <td colspan="9" class="text-center text-muted">
+          No employees found
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
