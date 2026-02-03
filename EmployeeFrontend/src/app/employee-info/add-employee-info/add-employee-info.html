@@ -26,14 +26,16 @@
   </div>
 
   <div class="mb-3">
-    <label class="form-label">Department</label>
-    <select class="form-select" formControlName="idDepartment">
-      <option value="">Select Department</option>
-      <option [value]="7">HR</option>
-      <option [value]="2">IT</option>
-      <option [value]="3">Accounts</option>
-    </select>
-  </div>
+  <label class="form-label">Department</label>
+
+<select class="form-select" formControlName="idDepartment">
+  <option value="">Select Department</option>
+  <option *ngFor="let dept of departments()" [value]="dept.id">
+    {{ dept.departName }}
+  </option>
+</select>
+</div>
+
 
   <div class="mb-3">
     <label class="form-label">Section</label>
