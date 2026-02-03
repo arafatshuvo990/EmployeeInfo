@@ -23,7 +23,11 @@ export interface Employee {
 
   idDepartment: number;
   idSection: number;
-
+  departmentName?: string;
+  designation?: string;
+  gender?: string;
+  jobType?: string;
+  maritalStatus?: string;
   idDesignation?: number;
 
   hasOvertime?: boolean;
@@ -44,7 +48,4 @@ export interface Employee {
 
   createdBy?: string;
 
-//   department?: Department;
-//   section?: Section;
-//   designation?: Designation;
 }

@@ -5,34 +5,29 @@ using Microsoft.EntityFrameworkCore;
 
 namespace EmployeeApi.Repositories
 {
-    public class EmployeeRepository : IEmployeeRepository
+    public class EmployeeRepository(HrmDbContext context) : IEmployeeRepository
     {
-        private readonly HrmDbContext _context;
-
-        public EmployeeRepository(HrmDbContext context)
-        {
-            _context = context;
-        }
 
         public async Task<List<Employee>> GetAllAsync()
         {
-            return await _context.Employees.ToListAsync();
+            return await context.Employees.Include(e => e.Department).Include(e=>e.Designation).Include(e=>e.Gender).Include(e=>e.JobType).ToListAsync();
         }
 
         public async Task<Employee?> GetByIdAsync(int idClient, int id)
         {
-            return await _context.Employees
+
+            return await context.Employees
                 .FirstOrDefaultAsync(e => e.IdClient == idClient && e.Id == id);
         }
 
         public async Task AddAsync(Employee employee)
         {
-            await _context.Employees.AddAsync(employee);
+            await context.Employees.AddAsync(employee);
         }
 
         public async Task SaveAsync()
         {
-            await _context.SaveChangesAsync();
+            await context.SaveChangesAsync();
         }
     }
 }

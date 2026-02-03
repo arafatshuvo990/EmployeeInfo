@@ -48,5 +48,9 @@
         public string? ContactNo { get; set; }
 
         public int? IdMaritalStatus { get; set; }
+        public string? DepartmentName { get; set; }
+        public string? Designation { get; set; }
+        public string? Gender { get; set; }
+        public string? JobType { get; set; }
     }
 }

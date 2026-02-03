@@ -11,5 +11,8 @@ export class EmployeeInfo {
   getAllEmployees() {
     return this.http.get<Employee[]>(this.apiUrl);
   }
+  addEmployee(employee: Employee) {
+    return this.http.post<Employee>(this.apiUrl, employee);
+  }
 }
 

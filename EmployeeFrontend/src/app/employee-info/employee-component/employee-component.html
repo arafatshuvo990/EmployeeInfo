@@ -1,5 +1,15 @@
 <div class="container mt-4">
-  <h3 class="mb-3">Employee List</h3>
+  <div class="d-flex justify-content-between align-items-center mb-3">
+  <h3 class="mb-0">Employee List</h3>
+
+  <button
+    type="button"
+    class="btn btn-primary"
+    (click)="goToAddEmployee()"
+  >
+    Add Employee
+  </button>
+</div>
 
   <table class="table table-bordered table-striped table-hover">
     <thead class="table-dark">
@@ -12,28 +22,21 @@
         <th>Contact</th>
         <th>Gender</th>
         <th>Job Type</th>
-        <th>Active</th>
+        <!-- <th>Marital Status</th> -->
       </tr>
     </thead>
 
     <tbody>
-      <tr *ngFor="let emp of employees; let i = index">
+      <tr *ngFor="let emp of employees(); let i = index">
         <td>{{ i + 1 }}</td>
         <td>{{ emp.employeeName }}</td>
         <td>{{ emp.employeeNameBangla }}</td>
-        <td>{{ emp.idDepartment }}</td>
-        <td>{{ emp.idDesignation }}</td>
+        <td>{{ emp.departmentName }}</td>
+        <td>{{ emp.designation }}</td>
         <td>{{ emp.contactNo }}</td>
-        <td>{{ emp.idGender }}</td>
-        <td>{{ emp.idJobType }}</td>
-        <!-- <td>
-          <span
-            class="badge"
-            [ngClass]="emp.hasOvertime ? 'bg-success' : 'bg-secondary'"
-          >
-            {{ emp.hasOvertime ? 'Yes' : 'No' }}
-          </span>
-        </td> -->
+        <td>{{ emp.gender }}</td>
+        <td>{{ emp.jobType }}</td>
+        <!-- <td>{{ emp.maritalStatus }}</td> -->
       </tr>
 
       <tr *ngIf="employees.length === 0">
