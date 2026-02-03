@@ -31,7 +31,7 @@ namespace EmployeeApi.Mappers
                 //Address = vm.Address,
                 //PresentAddress = vm.PresentAddress,
                 //NationalIdentificationNumber = vm.NationalIdentificationNumber,
-                //ContactNo = vm.ContactNo,
+                ContactNo = vm.ContactNo,
                 //IdMaritalStatus = vm.IdMaritalStatus
 
             };

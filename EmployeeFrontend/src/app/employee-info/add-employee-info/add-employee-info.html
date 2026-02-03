@@ -24,6 +24,10 @@
     <label class="form-label">Mother Name</label>
     <input type="text" class="form-control" formControlName="motherName">
   </div>
+  <div class="mb-3">
+    <label class="form-label">Contact Number</label>
+    <input type="text" class="form-control" formControlName="ContactNo">
+  </div>
 
   <div class="mb-3">
   <label class="form-label">Department</label>
@@ -40,18 +44,18 @@
   <div class="mb-3">
     <label class="form-label">Section</label>
     <select class="form-select" formControlName="idSection">
-      <option value="">Select Section</option>
-      <option [value]="7">Section A</option>
-      <option [value]="2">Section B</option>
+      <option *ngFor="let sec of section()" [value]="sec.id">
+    {{ sec.sectionName }}
+  </option>
     </select>
   </div>
 
   <div class="mb-3">
     <label class="form-label">Designation</label>
     <select class="form-select" formControlName="idDesignation">
-      <option value="">Select Designation</option>
-      <option [value]="7">Manager</option>
-      <option [value]="2">Software Engineer</option>
+      <option *ngFor="let desig of designations()" [value]="desig.id">
+    {{ desig.designationName }} 
+  </option>
     </select>
   </div>
 

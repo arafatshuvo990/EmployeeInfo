@@ -45,7 +45,7 @@
 
         //public string? NationalIdentificationNumber { get; set; }
 
-        //public string? ContactNo { get; set; }
+        public string? ContactNo { get; set; }
 
         //public int? IdMaritalStatus { get; set; }
     }
