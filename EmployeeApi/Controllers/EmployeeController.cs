@@ -47,6 +47,32 @@ namespace EmployeeApi.Controllers
             return Ok(EmployeeMapper.ToViewModel(employee));
         }
 
+        [HttpPut("{idClient:int}/{id:int}")]
+        public async Task<IActionResult> UpdateEmployee(
+           int idClient,
+           int id,
+           [FromBody] CreateEmployeeViewModel vm)
+        {
+            var employee = await employeeRepo.GetByIdAsync(idClient, id);
+
+            if (employee == null)
+                return NotFound("Employee not found");
+
+            EmployeeMapper.UpdateEntity(employee, vm);
+
+            await employeeRepo.UpdateAsync(employee);
+            await employeeRepo.SaveAsync();
+
+            return Ok(EmployeeMapper.ToViewModel(employee));
+        }
+        [HttpDelete("{idClient:int}/{id:int}")]
+        public async Task<IActionResult> DeleteEmployee(int idClient, int id)
+        {
+            await employeeRepo.DeleteAsync(idClient, id);
+            await employeeRepo.SaveAsync();
+
+            return NoContent();
+        }
 
     }
 }

@@ -5,37 +5,47 @@ namespace EmployeeApi.Mappers
 {
     public static class EmployeeMapper
     {
-       
+
         public static Employee ToEntity(CreateEmployeeViewModel vm)
         {
             return new Employee
             {
+                IdClient = vm.IdClient,
+
                 EmployeeName = vm.EmployeeName,
                 EmployeeNameBangla = vm.EmployeeNameBangla,
-                //EmployeeImage = vm.EmployeeImage,
+                EmployeeImage = vm.EmployeeImage,
+
                 FatherName = vm.FatherName,
                 MotherName = vm.MotherName,
-                //IdReportingManager = vm.IdReportingManager,
-                //IdJobType = vm.IdJobType,
-                //IdEmployeeType = vm.IdEmployeeType,
-                //BirthDate = vm.BirthDate,
-                //JoiningDate = vm.JoiningDate,
-                //IdGender = vm.IdGender,
-                //IdReligion = vm.IdReligion,
+
+                IdReportingManager = vm.IdReportingManager,
+                IdJobType = vm.IdJobType,
+                IdEmployeeType = vm.IdEmployeeType,
+
+                BirthDate = vm.BirthDate,
+                JoiningDate = vm.JoiningDate,
+
+                IdGender = vm.IdGender,
+                IdReligion = vm.IdReligion,
                 IdDepartment = vm.IdDepartment,
                 IdSection = vm.IdSection,
                 IdDesignation = vm.IdDesignation,
-                //HasOvertime = vm.HasOvertime,
-                //HasAttendenceBonus = vm.HasAttendenceBonus,
-                //IdWeekOff = vm.IdWeekOff,
-                //Address = vm.Address,
-                //PresentAddress = vm.PresentAddress,
-                //NationalIdentificationNumber = vm.NationalIdentificationNumber,
-                ContactNo = vm.ContactNo,
-                //IdMaritalStatus = vm.IdMaritalStatus
+                IdMaritalStatus = vm.IdMaritalStatus,
+                IdWeekOff = vm.IdWeekOff,
 
+                HasOvertime = vm.HasOvertime ?? false,
+                HasAttendenceBonus = vm.HasAttendenceBonus ?? false,
+
+                ContactNo = vm.ContactNo,
+                Address = vm.Address,
+                PresentAddress = vm.PresentAddress,
+                NationalIdentificationNumber = vm.NationalIdentificationNumber,
+
+                
             };
         }
+
 
         public static EmployeeViewModel ToViewModel(Employee e)
         {
@@ -70,6 +80,41 @@ namespace EmployeeApi.Mappers
                 ContactNo = e.ContactNo,
                 IdMaritalStatus = e.IdMaritalStatus
             };
+        }
+        public static void UpdateEntity(Employee emp, CreateEmployeeViewModel vm)
+        {
+            emp.EmployeeName = vm.EmployeeName;
+            emp.EmployeeNameBangla = vm.EmployeeNameBangla;
+            emp.EmployeeImage = vm.EmployeeImage;
+
+            emp.FatherName = vm.FatherName;
+            emp.MotherName = vm.MotherName;
+
+            emp.IdReportingManager = vm.IdReportingManager;
+            emp.IdJobType = vm.IdJobType;
+            emp.IdEmployeeType = vm.IdEmployeeType;
+
+            emp.BirthDate = vm.BirthDate;
+            emp.JoiningDate = vm.JoiningDate;
+
+            emp.IdGender = vm.IdGender;
+            emp.IdReligion = vm.IdReligion;
+
+            emp.IdDepartment = vm.IdDepartment;
+            emp.IdSection = vm.IdSection;
+            emp.IdDesignation = vm.IdDesignation;
+
+            emp.HasOvertime = vm.HasOvertime ?? false;
+            emp.HasAttendenceBonus = vm.HasAttendenceBonus ?? false;
+
+            emp.IdWeekOff = vm.IdWeekOff;
+            emp.Address = vm.Address;
+            emp.PresentAddress = vm.PresentAddress;
+            emp.NationalIdentificationNumber = vm.NationalIdentificationNumber;
+            emp.ContactNo = vm.ContactNo;
+
+            emp.IdMaritalStatus = vm.IdMaritalStatus;
+
         }
 
     }

@@ -47,5 +47,4 @@ export interface Employee {
   setDate?: Date;
 
   createdBy?: string;
-
 }

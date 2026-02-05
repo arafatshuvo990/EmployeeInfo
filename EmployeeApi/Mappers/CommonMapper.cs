@@ -45,6 +45,58 @@ namespace EmployeeApi.Mappers
                 GenderName = gender.GenderName,
             };
         }
+        public static EducationExaminationViewModel ToViewModel(EducationExamination educationExamination)
+        {
+            return new EducationExaminationViewModel
+            {
+                IdClient = educationExamination.IdClient,
+                Id= educationExamination.Id,
+                ExamName = educationExamination.ExamName,
+                IdEducationLevel = educationExamination.IdEducationLevel
+            };
+        }
+
+        public static EducationLevelViewModel ToViewModel(EducationLevel educationLevel) {
+
+            return new EducationLevelViewModel
+            {
+                IdClient = educationLevel.IdClient,
+                EducationLevelName = educationLevel.EducationLevelName,
+                Id = educationLevel.Id,
+                Description = educationLevel.Description,
+            };
+        
+        }
+        public static EducationResultViewModel ToViewModel(EducationResult educationResult) {
+            return new EducationResultViewModel
+            {
+                IdClient = educationResult.IdClient,
+                Id = educationResult.Id,
+                Description = educationResult.Description,
+                ResultName = educationResult.ResultName,
+            };
+        
+        }
+        public static JobTypeViewModel ToViewModel(JobType jobType)
+        {
+            return new JobTypeViewModel
+            {
+                IdClient = jobType.IdClient,
+                Id = jobType.Id,
+                JobTypeName = jobType.JobTypeName,
+                JobTypeBanglaName = jobType.JobTypeBanglaName,
+            };
+        }
+
+        public static EmployeeTypeViewModel ToViewModel(EmployeeType employeeType)
+        {
+            return new EmployeeTypeViewModel
+            {
+                IdClient = employeeType.IdClient,
+                Id = employeeType.Id,
+                TypeName = employeeType.TypeName,
+            };
+        }
 
     }
 }

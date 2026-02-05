@@ -1,32 +1,44 @@
-import { Component, inject, signal} from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { EmployeeInfo } from '../../Shared/services/employee-info';
 import { Employee } from '../../Shared/model/EmployeeInfo.model';
-import { Router } from '@angular/router';
+import { AddEmployeeInfo } from "../add-employee-info/add-employee-info";
+
 @Component({
   selector: 'app-employee-component',
-  imports: [CommonModule],
+  standalone: true,
+  imports: [CommonModule, AddEmployeeInfo],
   templateUrl: './employee-component.html',
-  styleUrl: './employee-component.css',
 })
 export class EmployeeComponent {
   employees = signal<Employee[]>([]);
+  showAddForm = signal(false);
+selectedEmployee = signal<Employee | null>(null);
 
-  employeeService = inject(EmployeeInfo);
-  private router = inject(Router);
-  ngOnInit(): void {
+
+
+  private employeeService = inject(EmployeeInfo);
+
+  ngOnInit() {
     this.getEmployeeInfo();
   }
+
   getEmployeeInfo() {
     this.employeeService.getAllEmployees().subscribe({
-      next: (res: Employee[]) => {
-        this.employees.set(res); 
-        console.log('Employees fetched successfully:', this.employees);
+      next: (res:Employee[]) => {
+        this.employees.set(res);
+        console.log('Employees loaded:', res);
       },
-      error: (err: any) => console.error('Error block triggered:', err),
+      error: (err) => console.error('Failed to load employees:', err),
     });
   }
-  goToAddEmployee() {
-    this.router.navigate(['/employees/add']);
+
+  closeForm() {
+    this.showAddForm.set(false);
+    this.getEmployeeInfo(); 
   }
+  editEmployee(emp: Employee) {
+  this.selectedEmployee.set(emp);
+  this.showAddForm.set(true);
+}
 }

@@ -24,7 +24,20 @@ namespace EmployeeApi.Repositories
         {
             await context.Employees.AddAsync(employee);
         }
+        public Task UpdateAsync(Employee employee)
+        {
+            context.Employees.Update(employee);
+            return Task.CompletedTask;
+        }
 
+        public async Task DeleteAsync(int idClient, int id)
+        {
+            var employee = await GetByIdAsync(idClient, id);
+            if (employee != null)
+            {
+                context.Employees.Remove(employee);
+            }
+        }
         public async Task SaveAsync()
         {
             await context.SaveChangesAsync();

@@ -26,5 +26,20 @@ namespace EmployeeApi.Repositories
         {
             return await context.Genders.ToListAsync();
         }
+
+        public async Task<List<EducationExamination>> GetEducationExaminationAsync()
+        {
+            return await context.EducationExaminations.ToListAsync();
+        }
+
+        public async Task<List<EducationLevel>> GetEducationLevelsAsync()
+        {
+            return await context.EducationLevels.ToListAsync();
+        }
+
+        public async Task<List<EducationResult>> GetEducationResultAsync()
+        {
+            return await context.EducationResults.ToListAsync();
+        }
     }
 }

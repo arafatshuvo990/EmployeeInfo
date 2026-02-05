@@ -13,7 +13,7 @@ namespace EmployeeApi.Controllers
         {
             var department = await commonRepository.GetDepartmentAllAsync();
             var result = department
-            .Select(DepartmentMapper.ToViewModel)
+            .Select(CommonMapper.ToViewModel)
             .ToList();
             return Ok(result);
         }
@@ -43,6 +43,35 @@ namespace EmployeeApi.Controllers
             var gender = await commonRepository.GetAllGenderAsync();
             var result = gender
                 .Select(CommonMapper.ToViewModel) .ToList();
+            return Ok(result);
+        }
+
+        [HttpGet("educationresult")]
+
+        public async Task<IActionResult> GetEducationExaminationAsync()
+        {
+            var educationexamination = await commonRepository.GetEducationExaminationAsync();
+            var result = educationexamination
+                .Select( CommonMapper.ToViewModel) .ToList();
+            return Ok(result);
+        }
+
+        [HttpGet("educationlevel")]
+
+        public async Task<IActionResult> GetEducationLevelsAsync()
+        {
+            var educationlevel = await commonRepository.GetEducationLevelsAsync();
+            var result = educationlevel
+                .Select( CommonMapper.ToViewModel) .ToList();
+            return Ok(result);
+        }
+        [HttpGet("educationresultname")]
+
+        public async Task<IActionResult> GetEducationResultAsync()
+        {
+            var educationresult = await commonRepository.GetEducationResultAsync();
+            var result = educationresult
+                .Select( CommonMapper.ToViewModel) .ToList();
             return Ok(result);
         }
 

@@ -8,5 +8,8 @@ namespace EmployeeApi.Repositories.Interfaces
         Task<List<Section>> GetSectionsAllAsync();
         Task<List<Designation>> GetAllDesignationAsync();
         Task<List<Gender>> GetAllGenderAsync();
+        Task<List<EducationExamination>> GetEducationExaminationAsync();
+        Task<List<EducationLevel>> GetEducationLevelsAsync();
+        Task<List<EducationResult>> GetEducationResultAsync();
     }
 }
