@@ -49,9 +49,9 @@ namespace EmployeeApi.Controllers
 
         [HttpPut("{idClient:int}/{id:int}")]
         public async Task<IActionResult> UpdateEmployee(
-           int idClient,
-           int id,
-           [FromBody] CreateEmployeeViewModel vm)
+         int idClient,
+         int id,
+         [FromBody] UpdateEmployeeViewModel vm)
         {
             var employee = await employeeRepo.GetByIdAsync(idClient, id);
 
@@ -59,20 +59,19 @@ namespace EmployeeApi.Controllers
                 return NotFound("Employee not found");
 
             EmployeeMapper.UpdateEntity(employee, vm);
-
-            await employeeRepo.UpdateAsync(employee);
             await employeeRepo.SaveAsync();
 
             return Ok(EmployeeMapper.ToViewModel(employee));
         }
-        [HttpDelete("{idClient:int}/{id:int}")]
-        public async Task<IActionResult> DeleteEmployee(int idClient, int id)
+        [HttpDelete("{id:int}")]
+        public async Task<IActionResult> DeleteEmployee(int id)
         {
-            await employeeRepo.DeleteAsync(idClient, id);
+            await employeeRepo.DeleteAsync(id);
             await employeeRepo.SaveAsync();
 
             return NoContent();
         }
+
 
     }
 }

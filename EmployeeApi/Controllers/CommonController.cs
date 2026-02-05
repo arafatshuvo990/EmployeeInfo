@@ -46,15 +46,7 @@ namespace EmployeeApi.Controllers
             return Ok(result);
         }
 
-        [HttpGet("educationresult")]
-
-        public async Task<IActionResult> GetEducationExaminationAsync()
-        {
-            var educationexamination = await commonRepository.GetEducationExaminationAsync();
-            var result = educationexamination
-                .Select( CommonMapper.ToViewModel) .ToList();
-            return Ok(result);
-        }
+       
 
         [HttpGet("educationlevel")]
 
@@ -74,6 +66,36 @@ namespace EmployeeApi.Controllers
                 .Select( CommonMapper.ToViewModel) .ToList();
             return Ok(result);
         }
+
+        [HttpGet("jobtypes")]
+        public async Task<IActionResult> GetJobTypesAsync()
+        {
+            var jobtypes = await commonRepository.GetJobTypesAsync();
+            var result = jobtypes
+                .Select(CommonMapper.ToViewModel).ToList();
+            return Ok(result);
+        }
+
+        [HttpGet("religios")]
+        public async Task <IActionResult> GetReligionsAsync()
+        {
+            var religions = await commonRepository.GetReligionsAsync();
+            var result = religions
+                .Select( CommonMapper.ToViewModel) .ToList();
+            return Ok(result);
+        }
+        [HttpGet("education-examination")]
+        public async Task<IActionResult> GetEducationExamName()
+        {
+            var educationExam = await commonRepository.GetEducationExamName();
+
+            var result = educationExam
+                .Select(CommonMapper.ToEducationExaminationViewModel)
+                .ToList();
+
+            return Ok(result);
+        }
+
 
     }
 }

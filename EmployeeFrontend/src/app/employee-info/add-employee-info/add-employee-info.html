@@ -1,109 +1,162 @@
-<form [formGroup]="employeeForm" (ngSubmit)="submit()" class="container mt-4">
-
+<form [formGroup]="employeeForm" (ngSubmit)="submitAll()" class="container mt-4">
   <h3 class="mb-3">Add Employee</h3>
+  <div [formGroup]="employeeForm">
+    <input type="hidden" formControlName="id" />
+    <input type="hidden" formControlName="idClient" />
 
-  <input type="hidden" formControlName="id">
-  <input type="hidden" formControlName="idClient">
+    <div class="mb-3">
+      <label class="form-label">Employee Name</label>
+      <input type="text" class="form-control" formControlName="employeeName" />
+    </div>
 
-  <div class="mb-3">
-    <label class="form-label">Employee Name</label>
-    <input type="text" class="form-control" formControlName="employeeName">
+    <div class="mb-3">
+      <label class="form-label">Employee Name (Bangla)</label>
+      <input type="text" class="form-control" formControlName="employeeNameBangla" />
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Father Name</label>
+      <input type="text" class="form-control" formControlName="fatherName" />
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Mother Name</label>
+      <input type="text" class="form-control" formControlName="motherName" />
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Contact Number</label>
+      <input type="text" class="form-control" formControlName="contactNo" />
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Department</label>
+      <select class="form-select" formControlName="idDepartment">
+        <option value="">Select Department</option>
+        <option *ngFor="let dept of departments()" [value]="dept.id">
+          {{ dept.departName }}
+        </option>
+      </select>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Section</label>
+      <select class="form-select" formControlName="idSection">
+        <option *ngFor="let sec of section()" [value]="sec.id">
+          {{ sec.sectionName }}
+        </option>
+      </select>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Designation</label>
+      <select class="form-select" formControlName="idDesignation">
+        <option *ngFor="let desig of designations()" [value]="desig.id">
+          {{ desig.designationName }}
+        </option>
+      </select>
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Job Type</label>
+      <select class="form-select" formControlName="idJobType">
+        <option *ngFor="let jobType of jobTypes()" [value]="jobType.id">
+          {{ jobType.jobTypeName }}
+        </option>
+      </select>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Gender</label>
+      <select class="form-select" formControlName="idGender">
+        <option value="">Select Gender</option>
+        <option *ngFor="let g of gender()" [value]="g.id">
+          {{ g.genderName }}
+        </option>
+      </select>
+    </div>
+    <!-- <div class="mb-3">
+    <label class="form-label">Religion</label>
+    <input type="number" class="form-control" formControlName="idReligion">
+  </div> -->
+    <div class="mb-3">
+      <label class="form-label">Birth Date</label>
+      <input type="date" class="form-control" formControlName="birthDate" />
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Joining Date</label>
+      <input type="date" class="form-control" formControlName="joiningDate" />
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Address</label>
+      <textarea class="form-control" formControlName="address"></textarea>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Present Address</label>
+      <textarea class="form-control" formControlName="presentAddress"></textarea>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">National ID</label>
+      <input type="text" class="form-control" formControlName="nationalIdentificationNumber" />
+    </div>
+
+    <div class="form-check mb-2">
+      <input type="checkbox" class="form-check-input" formControlName="hasOvertime" />
+      <label class="form-check-label">Has Overtime</label>
+    </div>
+
+    <div class="form-check mb-3">
+      <input type="checkbox" class="form-check-input" formControlName="hasAttendenceBonus" />
+      <label class="form-check-label">Attendance Bonus</label>
+    </div>
   </div>
+  <hr />
+  <div [formGroup]="educationForm">
+    <h4>Education Information</h4>
 
-  <div class="mb-3">
-    <label class="form-label">Employee Name (Bangla)</label>
-    <input type="text" class="form-control" formControlName="employeeNameBangla">
+    <input type="hidden" formControlName="idEmployee" />
+
+    <div class="mb-3">
+      <label>Major</label>
+      <input class="form-control" formControlName="major" />
+    </div>
+
+    <div class="mb-3">
+      <label>Institute</label>
+      <input class="form-control" formControlName="instituteName" />
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Education Level</label>
+      <select class="form-select" formControlName="idEducationLevel">
+        <option *ngFor="let edu of educationLevels()" [value]="edu.id">
+          {{ edu.educationLevelName }}
+        </option>
+      </select>
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Education Examination</label>
+      <select class="form-select" formControlName="idEducationExamination">
+        <option *ngFor="let exam of educationExaminations()" [value]="exam.id">
+          {{ exam.examName }}
+        </option>
+      </select>
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Education Result</label>
+      <select class="form-select" formControlName="idEducationResult">
+        <option *ngFor="let result of educationResults()" [value]="result.id">
+          {{ result.resultName }}
+        </option>
+      </select>
+    </div>
+    <div class="mb-3">
+      <label>Passing Year</label>
+      <input type="number" class="form-control" formControlName="passingYear" />
+    </div>
+
+    <button type="submit" class="btn btn-success">Save Employee & Education</button>
   </div>
-
-  <div class="mb-3">
-    <label class="form-label">Father Name</label>
-    <input type="text" class="form-control" formControlName="fatherName">
-  </div>
-
-  <div class="mb-3">
-    <label class="form-label">Mother Name</label>
-    <input type="text" class="form-control" formControlName="motherName">
-  </div>
-
-  <div class="mb-3">
-    <label class="form-label">Contact Number</label>
-    <input type="text" class="form-control" formControlName="contactNo">
-  </div>
-
-  <div class="mb-3">
-    <label class="form-label">Department</label>
-    <select class="form-select" formControlName="idDepartment">
-      <option value="">Select Department</option>
-      <option *ngFor="let dept of departments()" [value]="dept.id">
-        {{ dept.departName }}
-      </option>
-    </select>
-  </div>
-
-  <div class="mb-3">
-    <label class="form-label">Section</label>
-    <select class="form-select" formControlName="idSection">
-      <option *ngFor="let sec of section()" [value]="sec.id">
-        {{ sec.sectionName }}
-      </option>
-    </select>
-  </div>
-
-  <div class="mb-3">
-    <label class="form-label">Designation</label>
-    <select class="form-select" formControlName="idDesignation">
-      <option *ngFor="let desig of designations()" [value]="desig.id">
-        {{ desig.designationName }}
-      </option>
-    </select>
-  </div>
-
-  <div class="mb-3">
-    <label class="form-label">Gender</label>
-    <select class="form-select" formControlName="idGender">
-      <option value="">Select Gender</option>
-      <option *ngFor="let g of gender()" [value]="g.id">
-        {{ g.genderName }}
-      </option>
-    </select>
-  </div>
-
-  <div class="mb-3">
-    <label class="form-label">Birth Date</label>
-    <input type="date" class="form-control" formControlName="birthDate">
-  </div>
-
-  <div class="mb-3">
-    <label class="form-label">Joining Date</label>
-    <input type="date" class="form-control" formControlName="joiningDate">
-  </div>
-
-  <div class="mb-3">
-    <label class="form-label">Address</label>
-    <textarea class="form-control" formControlName="address"></textarea>
-  </div>
-
-  <div class="mb-3">
-    <label class="form-label">Present Address</label>
-    <textarea class="form-control" formControlName="presentAddress"></textarea>
-  </div>
-
-  <div class="mb-3">
-    <label class="form-label">National ID</label>
-    <input type="text" class="form-control" formControlName="nationalIdentificationNumber">
-  </div>
-
-  <div class="form-check mb-2">
-    <input type="checkbox" class="form-check-input" formControlName="hasOvertime">
-    <label class="form-check-label">Has Overtime</label>
-  </div>
-
-  <div class="form-check mb-3">
-    <input type="checkbox" class="form-check-input" formControlName="hasAttendenceBonus">
-    <label class="form-check-label">Attendance Bonus</label>
-  </div>
-
-  <button type="submit" class="btn btn-success me-2">Save</button>
-  <button type="button" class="btn btn-secondary" (click)="close.emit()">Cancel</button>
-
 </form>

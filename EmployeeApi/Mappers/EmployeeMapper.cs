@@ -11,7 +11,7 @@ namespace EmployeeApi.Mappers
             return new Employee
             {
                 IdClient = vm.IdClient,
-
+                Id = vm.Id,
                 EmployeeName = vm.EmployeeName,
                 EmployeeNameBangla = vm.EmployeeNameBangla,
                 EmployeeImage = vm.EmployeeImage,
@@ -42,6 +42,8 @@ namespace EmployeeApi.Mappers
                 PresentAddress = vm.PresentAddress,
                 NationalIdentificationNumber = vm.NationalIdentificationNumber,
 
+
+
                 
             };
         }
@@ -52,6 +54,7 @@ namespace EmployeeApi.Mappers
             return new EmployeeViewModel
             {
                 IdClient = e.IdClient,
+                Id = e.Id,
                 EmployeeName = e.EmployeeName,
                 EmployeeNameBangla = e.EmployeeNameBangla,
                 EmployeeImage = e.EmployeeImage,
@@ -81,41 +84,42 @@ namespace EmployeeApi.Mappers
                 IdMaritalStatus = e.IdMaritalStatus
             };
         }
-        public static void UpdateEntity(Employee emp, CreateEmployeeViewModel vm)
+        public static void UpdateEntity(Employee emp, UpdateEmployeeViewModel vm)
         {
-            emp.EmployeeName = vm.EmployeeName;
-            emp.EmployeeNameBangla = vm.EmployeeNameBangla;
-            emp.EmployeeImage = vm.EmployeeImage;
+            emp.EmployeeName = vm.EmployeeName ?? emp.EmployeeName;
+            emp.EmployeeNameBangla = vm.EmployeeNameBangla ?? emp.EmployeeNameBangla;
+            emp.EmployeeImage = vm.EmployeeImage ?? emp.EmployeeImage;
 
-            emp.FatherName = vm.FatherName;
-            emp.MotherName = vm.MotherName;
+            emp.FatherName = vm.FatherName ?? emp.FatherName;
+            emp.MotherName = vm.MotherName ?? emp.MotherName;
 
-            emp.IdReportingManager = vm.IdReportingManager;
-            emp.IdJobType = vm.IdJobType;
-            emp.IdEmployeeType = vm.IdEmployeeType;
+            emp.IdReportingManager = vm.IdReportingManager ?? emp.IdReportingManager;
+            emp.IdJobType = vm.IdJobType ?? emp.IdJobType;
+            emp.IdEmployeeType = vm.IdEmployeeType ?? emp.IdEmployeeType;
 
-            emp.BirthDate = vm.BirthDate;
-            emp.JoiningDate = vm.JoiningDate;
+            emp.BirthDate = vm.BirthDate ?? emp.BirthDate;
+            emp.JoiningDate = vm.JoiningDate ?? emp.JoiningDate;
 
-            emp.IdGender = vm.IdGender;
-            emp.IdReligion = vm.IdReligion;
+            emp.IdGender = vm.IdGender ?? emp.IdGender;
+            emp.IdReligion = vm.IdReligion ?? emp.IdReligion;
 
             emp.IdDepartment = vm.IdDepartment;
             emp.IdSection = vm.IdSection;
-            emp.IdDesignation = vm.IdDesignation;
+            emp.IdDesignation = vm.IdDesignation ?? emp.IdDesignation;
 
-            emp.HasOvertime = vm.HasOvertime ?? false;
-            emp.HasAttendenceBonus = vm.HasAttendenceBonus ?? false;
+            emp.HasOvertime = vm.HasOvertime ?? emp.HasOvertime;
+            emp.HasAttendenceBonus = vm.HasAttendenceBonus ?? emp.HasAttendenceBonus;
 
-            emp.IdWeekOff = vm.IdWeekOff;
-            emp.Address = vm.Address;
-            emp.PresentAddress = vm.PresentAddress;
-            emp.NationalIdentificationNumber = vm.NationalIdentificationNumber;
-            emp.ContactNo = vm.ContactNo;
+            emp.IdWeekOff = vm.IdWeekOff ?? emp.IdWeekOff;
+            emp.Address = vm.Address ?? emp.Address;
+            emp.PresentAddress = vm.PresentAddress ?? emp.PresentAddress;
+            emp.NationalIdentificationNumber =
+                vm.NationalIdentificationNumber ?? emp.NationalIdentificationNumber;
+            emp.ContactNo = vm.ContactNo ?? emp.ContactNo;
 
-            emp.IdMaritalStatus = vm.IdMaritalStatus;
-
+            emp.IdMaritalStatus = vm.IdMaritalStatus ?? emp.IdMaritalStatus;
         }
+
 
     }
 }

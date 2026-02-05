@@ -45,16 +45,18 @@ namespace EmployeeApi.Mappers
                 GenderName = gender.GenderName,
             };
         }
-        public static EducationExaminationViewModel ToViewModel(EducationExamination educationExamination)
+        public static EducationExaminationViewModel ToEducationExaminationViewModel(
+    EducationExamination educationExamination)
         {
             return new EducationExaminationViewModel
             {
                 IdClient = educationExamination.IdClient,
-                Id= educationExamination.Id,
+                Id = educationExamination.Id,
                 ExamName = educationExamination.ExamName,
                 IdEducationLevel = educationExamination.IdEducationLevel
             };
         }
+
 
         public static EducationLevelViewModel ToViewModel(EducationLevel educationLevel) {
 
@@ -97,6 +99,28 @@ namespace EmployeeApi.Mappers
                 TypeName = employeeType.TypeName,
             };
         }
+        public static ReligionViewaModel ToViewModel(Religion religion)
+        {
+            return new ReligionViewaModel
+            {
+                IdClient = religion.IdClient,
+                Id = religion.Id,
+                ReligionName = religion.ReligionName,
+                SetDate = religion.SetDate,
+
+            };
+        }
+     //   public static EducationExamNameViewModel ToEducationExamNameViewModel(
+     //EducationExamination educationExamination)
+     //   {
+     //       return new EducationExamNameViewModel
+     //       {
+     //           IdClient = educationExamination.IdClient,
+     //           Id = educationExamination.Id,
+     //           ExamName = educationExamination.ExamName
+     //       };
+     //   }
+
 
     }
 }

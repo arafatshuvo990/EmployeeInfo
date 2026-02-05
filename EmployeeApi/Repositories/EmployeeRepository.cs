@@ -1,6 +1,7 @@
 ﻿using EmployeeApi.Data;
 using EmployeeApi.Models;
 using EmployeeApi.Repositories.Interfaces;
+using EmployeeApi.ViewModels;
 using Microsoft.EntityFrameworkCore;
 
 namespace EmployeeApi.Repositories
@@ -24,23 +25,27 @@ namespace EmployeeApi.Repositories
         {
             await context.Employees.AddAsync(employee);
         }
-        public Task UpdateAsync(Employee employee)
-        {
-            context.Employees.Update(employee);
-            return Task.CompletedTask;
-        }
 
-        public async Task DeleteAsync(int idClient, int id)
+
+        public async Task DeleteAsync(int id)
         {
-            var employee = await GetByIdAsync(idClient, id);
+            var employee = await context.Employees
+                .FirstOrDefaultAsync(e => e.Id == id);
+
             if (employee != null)
             {
                 context.Employees.Remove(employee);
             }
         }
+
         public async Task SaveAsync()
         {
             await context.SaveChangesAsync();
+        }
+
+        public Task UpdateAsync(int id, UpdateEmployeeViewModel updateEmployeeViewModel)
+        {
+            throw new NotImplementedException();
         }
     }
 }

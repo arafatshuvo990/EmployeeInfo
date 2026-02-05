@@ -12,27 +12,26 @@
           <tr>
             <th>#</th>
             <th>Name</th>
-            <th>Bangla Name</th>
             <th>Department</th>
             <th>Designation</th>
+            <th>Action</th>
           </tr>
         </thead>
 
         <tbody>
           <tr
             *ngFor="let emp of employees(); let i = index"
-            (click)="editEmployee(emp)"
             style="cursor: pointer"
           >
             <td>{{ i + 1 }}</td>
             <td>{{ emp.employeeName }}</td>
-            <td>{{ emp.employeeNameBangla }}</td>
             <td>{{ emp.departmentName }}</td>
             <td>{{ emp.designation }}</td>
+            <td><button class="btn btn-sm btn-outline-danger" (click)="deleteEmployee(emp.id)">Delete</button></td>
           </tr>
 
           <tr *ngIf="employees().length === 0">
-            <td colspan="8" class="text-center text-muted">No employees found</td>
+            <td colspan="6" class="text-center text-muted">No employees found</td>
           </tr>
         </tbody>
       </table>

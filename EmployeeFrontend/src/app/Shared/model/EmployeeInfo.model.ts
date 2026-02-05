@@ -39,7 +39,7 @@ export interface Employee {
   presentAddress?: string;
 
   nationalIdentificationNumber?: string;
-  ContactNo?: string;
+  contactNo?: string;
 
   idMaritalStatus?: number;
 

@@ -27,7 +27,7 @@ namespace EmployeeApi.Repositories
             return await context.Genders.ToListAsync();
         }
 
-        public async Task<List<EducationExamination>> GetEducationExaminationAsync()
+        public async Task<List<EducationExamination>> GetEducationResltAsync()
         {
             return await context.EducationExaminations.ToListAsync();
         }
@@ -40,6 +40,21 @@ namespace EmployeeApi.Repositories
         public async Task<List<EducationResult>> GetEducationResultAsync()
         {
             return await context.EducationResults.ToListAsync();
+        }
+
+        public async Task<List<JobType>> GetJobTypesAsync()
+        {
+            return await context.JobTypes.ToListAsync();
+        }
+
+        public async Task<List<Religion>> GetReligionsAsync()
+        {
+            return await context.Religions.ToListAsync();
+        }
+
+        public async Task<List<EducationExamination>> GetEducationExamName()
+        {
+            return await context.EducationExaminations.ToListAsync();
         }
     }
 }

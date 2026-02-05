@@ -22,3 +22,23 @@ export interface Gender{
   idClient: number;
   genderName: string;
 }
+export interface jobType{
+  id: number;
+  idClient: number;
+  jobTypeName: string;
+}
+export interface idEducationLevel{
+  id: number;
+  idClient: number;
+  educationLevelName: string;
+}
+export interface idEducationExamination{
+  id: number;
+  idClient: number;
+  examName: string;
+}
+export interface idEducationResult{
+  id: number;
+  idClient: number;
+  resultName: string;
+}

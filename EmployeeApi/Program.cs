@@ -10,6 +10,8 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddControllers();
 builder.Services.AddScoped<IEmployeeRepository, EmployeeRepository>();
 builder.Services.AddScoped<ICommonRepository, CommonRepository>();
+builder.Services.AddScoped<IEmployeeEducation, EducationInfoRepository>();
+
 
 builder.Services.AddDbContext<HrmDbContext>(options =>
 {

@@ -16,11 +16,13 @@ export class EmployeeInfo {
   }
 
   updateEmployee(employee: Employee) {
-  return this.http.put<Employee>(
+  return this.http.put(
     `${this.apiUrl}/${employee.idClient}/${employee.id}`,
     employee
   );
 }
-
+deleteEmployee(id: number) {
+  return this.http.delete(`${this.apiUrl}/${id}`);
+}
 }
 
